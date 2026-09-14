@@ -1,0 +1,141 @@
+.login-page-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-form);
+
+  .illustration-section {
+    flex: 1;
+    background-color: var(--bg-illustration);
+    margin: 12px 0 12px 12px;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1.5rem;
+    transition: background-color 0.3s ease;
+
+    .illustration-img {
+      width: 483px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .logo {
+      text-align: center;
+
+      h1 {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+        margin-top: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        .welcome-text-hidden {
+          display: inline-block;
+          overflow: hidden;
+          white-space: pre;
+          color: var(--text-illustration-subheading);
+          font-family: var(--font-text);
+          font-weight: 600;
+          animation: slideHide 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+        }
+
+        .brand-text {
+          color: var(--text-illustration-heading);
+          font-family: var(--font-text);
+          font-weight: 700;
+        }
+      }
+      p {
+        color: var(--text-illustration);
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+  }
+
+  @keyframes slideHide {
+    0% {
+      max-width: 500px;
+      opacity: 1;
+    }
+    100% {
+      max-width: 0;
+      opacity: 0;
+    }
+  }
+
+  .form-section {
+    flex: 1;
+    background-color: var(--bg-form); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 1; 
+    transition: background-color 0.3s ease;
+    position: relative; // For positioning the theme toggle
+
+    & > .theme-toggle-container {
+      position: absolute !important;
+      top: 2rem !important;
+      right: 2rem !important;
+      z-index: 100;
+      height: 48px;
+    }
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+
+      h2 {
+        font-size: 3.5rem;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .subtitle {
+        font-size: 1.3rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        line-height: 1.4;
+      }
+
+      .register-link {
+        margin-top: 2rem;
+        text-align: right;
+        font-size: 1.3rem;
+        color: var(--text-primary);
+
+        a {
+          color: var(--finly-orange);
+          font-weight: bold;
+          text-decoration: none;
+          transition: color 0.2s ease;
+
+          &:hover {
+            filter: brightness(0.9);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .illustration-section {
+      display: none;
+    }
+
+    .form-section {
+      min-height: 100vh;
+    }
+  }
+}

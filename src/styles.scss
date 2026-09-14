@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --finly-orange: #FF9D00;
+  --finly-yellow: #FFCF00;
+  --font-text: 'Nunito', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+
+  // Light theme colors
+  --bg-form: var(--finly-yellow);
+  --bg-illustration: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #333333;
+  --text-illustration: #555555;
+  --text-illustration-heading: var(--finly-orange);
+  --text-illustration-subheading: #FBC02D;
+}
+
+[data-theme="dark"] {
+  --bg-form: #22232D;
+  --bg-illustration: #F8A359;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-illustration: #1a1a1a;
+  --text-illustration-heading: #ffffff; // White for the logo Finly to stand out
+  --text-illustration-subheading: #22232D; // Dark for 'Boas vindas ao' to contrast with the logo
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+p, span, div, input, textarea, a {
+  font-family: var(--font-text);
+  font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6, button, label {
+  font-family: var(--font-heading);
+}

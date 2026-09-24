@@ -1,25 +1,45 @@
-import { Injectable } from '@angular/core';
-import { delay, Observable, of } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+
+export interface UserResponse {
+  id: number;
+  name: string;
+  email: string;
+}
+
+export interface UserCreated {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private http = inject(HttpClient);
+  private apiUrl = `${environment.apiUrl}/users`;
 
-  constructor() { }
-
-  // TODO: Replace with real HTTP call
-  login(email: string, password: string): Observable<{token: string, user: any}> {
-    return of({
-      token: 'fake-jwt-token-12345',
-      user: {
-        name: 'Usuário Teste',
-        email: email
-      }
-    }).pipe(delay(1500));
+  register(name: string, email: string, password: string): Observable<UserCreated> {
+    return this.http.post<UserCreated>(this.apiUrl, { name, email, password });
   }
-  
+
+  login(email: string, password: string): Observable<UserResponse> {
+    return this.http.post<UserResponse>(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap(user => localStorage.setItem('currentUser', JSON.stringify(user)))
+    );
+  }
+
   logout() {
-    // TODO: clear tokens, etc.
+    localStorage.removeItem('currentUser');
+  }
+
+  getCurrentUser(): UserResponse | null {
+    const userStr = localStorage.getItem('currentUser');
+    return userStr ? JSON.parse(userStr) : null;
   }
 }

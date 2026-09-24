@@ -5,13 +5,25 @@
   --font-heading: 'Plus Jakarta Sans', sans-serif;
 
   // Light theme colors
-  --bg-form: var(--finly-yellow);
+  --bg-form: var(--finly-orange);
   --bg-illustration: #ffffff;
   --text-primary: #1a1a1a;
   --text-secondary: #333333;
   --text-illustration: #555555;
   --text-illustration-heading: var(--finly-orange);
   --text-illustration-subheading: #FBC02D;
+
+  // Dashboard
+  --bg-dashboard: #f4f5f7;
+  --bg-card: #ffffff;
+  --bg-header: #ffffff;
+  --bg-card-hover: #f9f9fb;
+  --text-muted: #8a8a9a;
+  --border-subtle: #e8e8ee;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --icon-positive: #22c55e;
+  --icon-negative: #ef4444;
+  --bg-nav-active: rgba(255, 157, 0, 0.1); // Light orange background for active nav
 }
 
 [data-theme="dark"] {
@@ -22,6 +34,18 @@
   --text-illustration: #1a1a1a;
   --text-illustration-heading: #ffffff; // White for the logo Finly to stand out
   --text-illustration-subheading: #22232D; // Dark for 'Boas vindas ao' to contrast with the logo
+
+  // Dashboard
+  --bg-dashboard: #1a1b23;
+  --bg-card: #22232D;
+  --bg-header: #1e1f28;
+  --bg-card-hover: #2a2b36;
+  --text-muted: #8a8a9a;
+  --border-subtle: #2e2f3a;
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.3);
+  --icon-positive: #4ade80;
+  --icon-negative: #f87171;
+  --bg-nav-active: rgba(255, 157, 0, 0.15); // Dark orange background for active nav
 }
 
 html, body {

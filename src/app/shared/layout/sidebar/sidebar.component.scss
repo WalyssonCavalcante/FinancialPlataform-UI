@@ -1,0 +1,121 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border-subtle);
+  padding: 1.75rem 1.25rem;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+// ── Logo ──
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 0.5rem;
+  margin-bottom: 2rem;
+
+  .logo-img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+  }
+}
+
+// ── Navigation ──
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+
+    svg {
+      flex-shrink: 0;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    &:hover {
+      color: var(--text-primary);
+      background: var(--bg-card-hover);
+
+      svg {
+        opacity: 0.8;
+      }
+    }
+
+    &.active {
+      color: var(--finly-orange);
+      background: var(--bg-nav-active);
+
+      svg {
+        opacity: 1;
+        stroke: var(--finly-orange);
+      }
+    }
+  }
+}
+
+// ── Footer / Theme Toggle ──
+.sidebar-footer {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.theme-switch {
+  display: flex;
+  background: var(--bg-dashboard);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.theme-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+
+  &.active {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// ── Responsive ──
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

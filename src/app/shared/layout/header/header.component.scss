@@ -1,0 +1,138 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+// ── Logo ──
+.header-left {
+  display: flex;
+  align-items: center;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--finly-orange), var(--finly-yellow));
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: var(--text-primary);
+  }
+}
+
+// ── Navigation ──
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+
+    svg {
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    &:hover {
+      color: var(--text-primary);
+      background: var(--bg-card-hover);
+
+      svg {
+        opacity: 1;
+      }
+    }
+
+    &.active {
+      color: var(--finly-orange);
+      background: var(--bg-nav-active);
+
+      svg {
+        opacity: 1;
+        stroke: var(--finly-orange);
+      }
+    }
+  }
+}
+
+// ── Right side ──
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--icon-negative);
+      background: rgba(239, 68, 68, 0.08);
+
+      svg {
+        stroke: var(--icon-negative);
+      }
+    }
+  }
+}
+
+// ── Responsive ──
+@media (max-width: 768px) {
+  .header {
+    padding: 0 1rem;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .logo-text {
+    display: none;
+  }
+}

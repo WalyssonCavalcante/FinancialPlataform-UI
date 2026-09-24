@@ -1,0 +1,20 @@
+.dashboard-shell {
+  min-height: 100vh;
+  background: var(--bg-dashboard);
+  display: flex;
+}
+
+.dashboard-content {
+  flex: 1;
+  margin-left: 260px;
+  padding: 2rem 2.5rem;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}

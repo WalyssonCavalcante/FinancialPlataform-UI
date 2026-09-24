@@ -12,6 +12,16 @@ export const routes: Routes = [
     data: { animation: 'RegisterPage' }
   },
   {
+    path: 'dashboard',
+    loadComponent: () => import('./features/dashboard/dashboard-layout.component').then(m => m.DashboardLayoutComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./features/dashboard/pages/home/dashboard-home.component').then(m => m.DashboardHomeComponent)
+      }
+    ]
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { RegisterFormComponent, RegisterCredentials } from '../../components/register-form/register-form.component';
 import { ThemeToggleComponent } from '../../../../shared/components/theme-toggle/theme-toggle.component';
+import { ToastService } from '../../../../shared/components/toast/toast.component';
 
 @Component({
   selector: 'app-register-page',
@@ -10,7 +11,7 @@ import { ThemeToggleComponent } from '../../../../shared/components/theme-toggle
   imports: [RegisterFormComponent, RouterLink, ThemeToggleComponent],
   template: `
     <div class="register-page-container">
-      
+
       <div class="form-section">
         <div class="theme-toggle-container">
           <app-theme-toggle [flipMoon]="true"></app-theme-toggle>
@@ -18,12 +19,12 @@ import { ThemeToggleComponent } from '../../../../shared/components/theme-toggle
         <div class="form-wrapper">
           <h2>Bem-vindo(a)</h2>
           <p class="subtitle">Tenha uma experiência simples no controle das suas finanças</p>
-          
-          <app-register-form 
-            [isLoading]="isLoading" 
+
+          <app-register-form
+            [isLoading]="isLoading"
             (registerSubmit)="onRegister($event)">
           </app-register-form>
-          
+
           <div class="login-link">
             Já possui conta? <a routerLink="/login">Entre aqui!</a>
           </div>
@@ -45,19 +46,21 @@ import { ThemeToggleComponent } from '../../../../shared/components/theme-toggle
 export class RegisterPageComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
-  
+  private toast = inject(ToastService);
+
   isLoading = false;
 
   onRegister(credentials: RegisterCredentials) {
     this.isLoading = true;
-    // In a real app we would call authService.register(credentials.email, credentials.password)
-    this.authService.login(credentials.email, credentials.password).subscribe({
+    this.authService.register(credentials.name, credentials.email, credentials.password).subscribe({
       next: () => {
         this.isLoading = false;
-        this.router.navigate(['/dashboard']);
+        this.toast.success('Conta criada com sucesso! Faça login para continuar');
+        setTimeout(() => this.router.navigate(['/login']), 1500);
       },
       error: (err: any) => {
         this.isLoading = false;
+        this.toast.error('Erro ao criar conta. Tente novamente.');
         console.error('Registration failed', err);
       }
     });

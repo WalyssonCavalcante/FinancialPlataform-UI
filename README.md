@@ -1,59 +1,57 @@
-# FinancialPlatformUi
+# UI da Plataforma Financeira
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.3.
+A aplicação web em Angular da Plataforma Financeira. O sistema oferece um painel onde o usuário pode acompanhar receitas e despesas, configurar limites mensais de gastos e gerenciar seu perfil.
 
-## Development server
+## Arquitetura
 
-To start a local development server, run:
+O front-end foi construído com Angular, organizado em torno de componentes *standalone*.
+
+- Core - Serviços que rodam em toda a aplicação, como o gerenciador de temas (Dark/Light mode) e guardas de rota
+- Shared - Componentes visuais reutilizáveis, como o menu lateral (Sidebar) e o layout principal
+- Features - As telas principais do sistema (Dashboard, Login, Configurações)
+- Styles - Variáveis globais em SCSS e tipografia base
+
+## Estrutura do Projeto
+
+```text
+financial-platform-ui/
+├── src/
+│   ├── app/
+│   │   ├── core/          # Serviços essenciais e gestão de estado
+│   │   ├── shared/        # Componentes de layout (Sidebar, etc)
+│   │   ├── features/      # Telas (Dashboard, Auth, Settings, Limits)
+│   │   └── app.routes.ts  # Configuração de rotas
+│   ├── assets/            # Imagens, ícones e arquivos estáticos
+│   └── styles.scss        # Variáveis de tema e estilos globais
+```
+
+## Pré-requisitos
+
+- Node.js 18 ou superior
+- Angular CLI
+
+## Instalação
+
+Para baixar as dependências do projeto, execute:
+
+```bash
+npm install
+```
+
+## Uso
+
+Inicie o servidor de desenvolvimento:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acesse `http://localhost:4200/` no navegador. A aplicação recarrega automaticamente caso algum arquivo seja alterado.
 
-## Code scaffolding
+## Funcionalidades
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Autenticação:** Login e criação de conta integrados com a API.
+- **Dashboard:** Visão geral da saúde financeira do usuário.
+- **Lançamentos:** Registro de novas receitas e despesas.
+- **Limites:** Definição e acompanhamento dos limites mensais de gastos por categoria.
+- **Configurações:** Edição de dados do perfil e personalização do tema (Claro/Escuro).

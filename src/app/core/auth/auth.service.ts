@@ -39,7 +39,18 @@ export class AuthService {
   }
 
   getCurrentUser(): UserResponse | null {
-    const userStr = localStorage.getItem('currentUser');
+    const userStr = localStorage.getItem("currentUser") || localStorage.getItem("finly-user");
     return userStr ? JSON.parse(userStr) : null;
   }
+
+  updateUser(id: number, data: { name?: string; password?: string }): Observable<UserResponse> {
+    return this.http.put<UserResponse>(`${this.apiUrl}/${id}`, data).pipe(
+      tap(user => {
+        // update local storage
+        if (localStorage.getItem("currentUser")) localStorage.setItem("currentUser", JSON.stringify(user));
+        if (localStorage.getItem("finly-user")) localStorage.setItem("finly-user", JSON.stringify(user));
+      })
+    );
+  }
 }
+

@@ -1,0 +1,121 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 4rem;
+}
+
+.settings-header {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 2rem;
+
+  .settings-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 3rem;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.03em;
+  }
+
+  .settings-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+}
+
+.settings-content {
+  max-width: 600px;
+}
+
+.settings-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .finly-input {
+    background: var(--bg-dashboard);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: var(--finly-orange);
+      box-shadow: 0 0 0 3px rgba(255, 157, 0, 0.1);
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+
+  .status-message {
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    &.success {
+      color: var(--icon-positive);
+    }
+    
+    &.error {
+      color: var(--icon-negative);
+    }
+  }
+
+  .btn-primary {
+    background: var(--finly-orange);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      filter: brightness(0.9);
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+}

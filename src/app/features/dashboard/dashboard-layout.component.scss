@@ -1,20 +1,105 @@
 .dashboard-shell {
-  min-height: 100vh;
+  height: 100vh;
   background: var(--bg-dashboard);
   display: flex;
 }
 
-.dashboard-content {
+.main-wrapper {
   flex: 1;
   margin-left: 260px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  background: var(--bg-dashboard);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 70px;
+  box-sizing: border-box;
+
+  .header-spacer {
+    flex: 1;
+  }
+
+  .balance-pill {
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 99px;
+    padding: 0.5rem 1rem 0.5rem 1.25rem;
+    gap: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: opacity 0.3s ease;
+
+    &.loading {
+      opacity: 0.5;
+    }
+
+    .balance-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .balance-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 0.2rem;
+      }
+
+      .balance-value {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        line-height: 1;
+      }
+    }
+
+    .balance-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--finly-orange);
+      color: #1a1a1a;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+.dashboard-content {
+  flex: 1;
   padding: 2rem 2.5rem;
   box-sizing: border-box;
-  min-height: 100vh;
+  overflow-y: auto;
 }
 
 @media (max-width: 768px) {
-  .dashboard-content {
+  .main-wrapper {
     margin-left: 0;
+  }
+  
+  .top-header {
+    padding: 1rem;
+  }
+
+  .dashboard-content {
     padding: 1rem;
   }
 }

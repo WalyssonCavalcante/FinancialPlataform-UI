@@ -18,6 +18,22 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () => import('./features/dashboard/pages/home/dashboard-home.component').then(m => m.DashboardHomeComponent)
+      },
+      {
+        path: 'transactions',
+        loadComponent: () => import('./features/dashboard/pages/transactions/transactions.component').then(m => m.TransactionsComponent)
+      },
+      {
+        path: 'reports',
+        loadComponent: () => import('./features/dashboard/pages/reports/reports.component').then(m => m.ReportsComponent)
+      },
+      {
+        path: 'limits',
+        loadComponent: () => import('./features/dashboard/pages/limits/limits.component').then(m => m.LimitsComponent)
+      },
+      {
+        path: 'settings',
+        loadComponent: () => import('./features/dashboard/pages/settings/settings.component').then(m => m.SettingsComponent)
       }
     ]
   },
@@ -27,3 +43,4 @@ export const routes: Routes = [
     pathMatch: 'full'
   }
 ];
+

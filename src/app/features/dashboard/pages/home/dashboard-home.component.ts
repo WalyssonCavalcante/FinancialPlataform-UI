@@ -23,7 +23,7 @@ interface CategoryItem {
 
       <!-- Top Bar: Greeting + Period Filters -->
       <section class="top-bar">
-        <div></div>
+        <h1 class="greeting">Olá, {{ userName }}!</h1>
         <div class="period-filters">
           @for (period of periods; track period) {
             <button
@@ -36,32 +36,51 @@ interface CategoryItem {
         </div>
       </section>
 
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <h2 class="hero-greeting">Olá, {{ userName }}!</h2>
-        
-        <div class="balance-display">
-          <h1 class="hero-value">R$ {{ account ? formatMoney(account.balance) : '0,00' }}</h1>
-          <div class="hero-actions">
-            <button class="pill-btn primary" (click)="openModal('INCOME')">
-              <span class="pill-icon">↑</span> Receber
-            </button>
-            <button class="pill-btn secondary" (click)="openModal('EXPENSE')">
-              <span class="pill-icon">↓</span> Gastar
-            </button>
+      <!-- Summary Cards -->
+      <section class="summary-row">
+        <div class="summary-card">
+          <span class="card-label">Saldo</span>
+          <div class="card-value-row">
+            <span class="card-value">R$ {{ account ? formatMoney(account.balance) : '0,00' }}</span>
+            <span class="card-badge positive">+ 0,0%</span>
           </div>
         </div>
+        <div class="summary-card">
+          <span class="card-label">Receitas</span>
+          <div class="card-value-row">
+            <span class="card-value">R$ {{ formatMoney(totalIncome) }}</span>
+            <span class="card-badge positive">+ 0%</span>
+          </div>
+        </div>
+        <div class="summary-card">
+          <span class="card-label">Despesas</span>
+          <div class="card-value-row">
+            <span class="card-value">R$ {{ formatMoney(totalExpense) }}</span>
+            <span class="card-badge negative">- 0%</span>
+          </div>
+        </div>
+      </section>
 
-        <div class="hero-stats">
-          <div class="stat-group">
-            <span class="stat-label">Entradas no período</span>
-            <span class="stat-value positive">R$ {{ formatMoney(totalIncome) }}</span>
+      <!-- Quick Actions -->
+      <section class="actions-row">
+        <button class="action-card" (click)="openModal('INCOME')">
+          <span class="action-icon income-icon">
+            <img src="/add.svg" alt="Add" class="svg-img" />
+          </span>
+          <div class="action-text">
+            <span class="action-title">Adicionar receita</span>
+            <span class="action-desc">Registre uma receita manualmente</span>
           </div>
-          <div class="stat-group">
-            <span class="stat-label">Saídas no período</span>
-            <span class="stat-value negative">R$ {{ formatMoney(totalExpense) }}</span>
+        </button>
+        <button class="action-card" (click)="openModal('EXPENSE')">
+          <span class="action-icon expense-icon">
+            <img src="/minus.svg" alt="Minus" class="svg-img" />
+          </span>
+          <div class="action-text">
+            <span class="action-title">Adicionar despesa</span>
+            <span class="action-desc">Registre uma despesa manualmente</span>
           </div>
-        </div>
+        </button>
       </section>
 
       <!-- Bottom Grid: Categories + Transactions -->

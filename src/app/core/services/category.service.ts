@@ -9,6 +9,7 @@ export interface Category {
   icon: string;
   color: string;
   type: 'INCOME' | 'EXPENSE';
+  monthlyLimit?: number;
 }
 
 export interface CategoryRequestDTO {
@@ -31,5 +32,9 @@ export class CategoryService {
 
   createCategory(name: string, type: 'INCOME' | 'EXPENSE'): Observable<Category> {
     return this.http.post<Category>(this.apiUrl, { name, type });
+  }
+
+  updateLimit(id: number, limit: number): Observable<Category> {
+    return this.http.patch<Category>(`${this.apiUrl}/${id}/limit`, { limit });
   }
 }

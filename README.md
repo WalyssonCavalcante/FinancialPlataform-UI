@@ -2,6 +2,9 @@
 
 A aplicação web em Angular da Plataforma Financeira. O sistema oferece um painel onde o usuário pode acompanhar receitas e despesas, configurar limites mensais de gastos e gerenciar seu perfil.
 
+<img width="1919" height="944" alt="image" src="https://github.com/user-attachments/assets/4dcc3ce1-24ff-405b-82a9-8d976ef5aa93" />
+<img width="1919" height="945" alt="image" src="https://github.com/user-attachments/assets/7e27cff6-cefb-441b-aed5-731d3db16a6c" />
+
 ## Arquitetura
 
 O front-end foi construído com Angular, organizado em torno de componentes *standalone*.
